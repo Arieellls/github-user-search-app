@@ -9,7 +9,7 @@ const Status = () => {
     <div className='flex justify-around p-3 gap-3 text-txt-high-contrast bg-bg-primary rounded-xl'>
       <StatusTile title='Repos' value={repos} />
       <StatusTile title='Followers' value={followers} />
-      <StatusTile title='Commits' value='9' />
+      <StatusTile title='Following' value='9' />
     </div>
   );
 }
