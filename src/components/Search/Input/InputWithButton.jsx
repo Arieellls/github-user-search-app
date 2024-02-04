@@ -11,8 +11,8 @@ export function InputWithButton() {
 
   const getUserProfile = () => {
     console.log(searchQuery)
-    useProfileStore.getState().getUserProfile(searchQuery);
     useProfileStore.setState((state) => ({ ...state, show: true }));
+    useProfileStore.getState().getUserProfile(searchQuery);
   }
 
   const handleInputChange = (event) => {

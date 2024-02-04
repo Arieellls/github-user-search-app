@@ -13,6 +13,7 @@ const formatJoinedDate = (rawDate) => {
 export const useProfileStore = create((set) => ({
   initializing: true,
   show: false,
+  notFound: false,
   name: "",
   username: "",
   joinedDate: "",
@@ -30,16 +31,20 @@ export const useProfileStore = create((set) => ({
 
     if (!response.ok) {
       console.log("Something went wrong");
+      set({ initializing: false });
+      set({ notFound: true });
       return;
     }
 
     await new Promise((resolve) => setTimeout(resolve, 1000))
-
+    
     const responseData = await response.json();
     return responseData;
   },
-
+  
   getUserProfile: async (username) => {
+    set({ initializing: true });
+    set({ notFound: false });
     const data = await useProfileStore.getState().fetchData(username);
     console.log(data);
     if (!data) {
